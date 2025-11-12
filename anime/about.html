@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Информация о сайте AnimeReviews и команде разработчиков.">
-    <meta name="keywords" content="аниме, рецензии, команда, сайт, информация">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>О нас — AnimeReviews</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header>
-    <h1>AnimeReviews</h1>
+    <div class="brand"><h1>AnimeReviews</h1></div>
     <nav>
         <ul>
             <li><a href="index.html">Главная</a></li>
@@ -20,12 +19,13 @@
             <li><a href="contacts.html">Контакты</a></li>
         </ul>
     </nav>
+    <button class="btn btn--primary" id="openAuth">Войти</button>
 </header>
 
 <main>
     <section>
         <h2>Наша миссия</h2>
-        <p>Мы создаем платформу для <strong>объективных</strong> рецензий на аниме, где каждый пользователь может <em>поделиться своим мнением</em> и найти новые интересные аниме.</p>
+        <p>Мы создаем платформу для <strong>объективных</strong> рецензий на аниме, где каждый пользователь может <em>поделиться своим мнением</em> и найти новые интересные тайтлы.</p>
     </section>
 
     <section>
@@ -34,21 +34,48 @@
             <li>Vidmi — разработка фронтенда</li>
             <li>Vidmi — дизайн и UX</li>
             <li>Vidmi — backend и база данных</li>
-            <strong>Как же жаль что ничего из этого нет))</strong>
+            <strong>Как же жаль, что ничего из этого пока нет🙂</strong>
         </ul>
     </section>
 
     <section>
         <h2>Цитата о творчестве</h2>
-        <blockquote>
-            «Аниме — это окно в другой мир, где каждый найдет что-то свое.»
-            <cite>— Команда AnimeReviews</cite>
-        </blockquote>
+        <blockquote>«Аниме — это окно в другой мир, где каждый найдёт что-то своё.»<cite>— Команда AnimeReviews</cite></blockquote>
     </section>
 </main>
 
 <footer>
     <p>&copy; 2025 AnimeReviews. Все права защищены.</p>
+    <div class="footer-banner">Реклама</div>
 </footer>
+<div id="chatStub">Чат (скоро)</div>
+
+<div class="modal" id="authModal" aria-hidden="true" role="dialog" aria-labelledby="authTitle">
+    <div class="modal__card">
+        <div class="modal__header">
+            <h3 id="authTitle">Вход в AnimeReviews</h3>
+            <button class="modal__close" id="closeAuth" aria-label="Закрыть">×</button>
+        </div>
+        <form id="authForm" novalidate>
+            <div class="form-field">
+                <label for="email">Email</label>
+                <input id="email" type="email" required placeholder="you@example.com" autocomplete="username">
+            </div>
+            <div class="form-field">
+                <label for="password">Пароль</label>
+                <input id="password" type="password" required minlength="6" placeholder="••••••••" autocomplete="current-password">
+            </div>
+            <div class="auth-actions">
+                <label><input type="checkbox" id="remember"> Запомнить меня</label>
+                <button class="btn btn--primary" type="submit">Войти</button>
+            </div>
+            <div style="margin-top:10px">
+                <button class="btn btn--ghost" type="button" id="toRegister">Регистрация</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="lb" aria-hidden="true"><img alt=""></div>
+<script src="scripts.js" defer></script>
 </body>
 </html>
