@@ -55,6 +55,26 @@ header nav a:hover{color:var(--brand)}
     text-transform:uppercase;
 }
 
+header nav a.active{
+    color: var(--brand);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+header nav a{
+    color:var(--text);
+    font-weight:500;
+    text-decoration:none;
+    transition: color .9s ease, transform .9s ease;  /* плавность */
+}
+
+header nav a:hover{
+    color:var(--brand);
+    transform: translateY(-2px);
+}
+
+
+
 .btn{
     padding:10px 14px;
     border:none;
