@@ -2,15 +2,14 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Сайт с рецензиями на аниме. Пользователи могут оценивать и писать рецензии.">
-    <meta name="keywords" content="аниме, рецензии, отзывы, рейтинг, пользователи">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Сайт с рецензиями на аниме. Пользователи могут оценивать и писать рецензии.">
     <title>Главная — AnimeReviews</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header>
-    <h1>AnimeReviews</h1>
+    <div class="brand"><h1>AnimeReviews</h1></div>
     <nav>
         <ul>
             <li><a href="index.html">Главная</a></li>
@@ -20,42 +19,81 @@
             <li><a href="contacts.html">Контакты</a></li>
         </ul>
     </nav>
+    <button class="btn btn--primary" id="openAuth">Войти</button>
 </header>
 
 <main>
-    <section class="content">
+    <section>
         <h2>Новые рецензии</h2>
-
         <article>
             <h3>Атака титанов — 10/10</h3>
-            <img src="attack_on_titan.jpg" alt="Атака титанов">
+            <img src="img/attack_on_titan.jpg" alt="Атака титанов" style="width:100%;max-height:280px;object-fit:cover;border-radius:10px">
             <p><strong>Отличное</strong> аниме с захватывающим сюжетом и <em>глубокой драмой персонажей</em>.</p>
-            <blockquote>
-                «Каждый эпизод держит в напряжении!»
-                <cite>— Пользователь AnimeFFFFF</cite>
-            </blockquote>
+            <blockquote>«Каждый эпизод держит в напряжении!»<cite>— Пользователь AnimeFFFFF</cite></blockquote>
         </article>
-
         <article>
             <h3>Наруто — 9/10</h3>
-            <img src="naruto.jpg" alt="Наруто">
-            <p>Классическое аниме с большим количеством <ins>эмоциональных сцен</ins> и <del>кто-то его смотрит?</del>.</p>
+            <img src="img/naruto.jpg" alt="Наруто" style="width:100%;max-height:280px;object-fit:cover;border-radius:10px">
+            <p>Классическое аниме с большим количеством <ins>эмоциональных сцен</ins> и <del>лишних филлеров</del>.</p>
         </article>
     </section>
 
     <aside>
         <h2>Популярные жанры</h2>
         <ul>
-            <li>Драма</li>
-            <li>Экшен</li>
-            <li>Фэнтези</li>
-            <li>Романтика</li>
+            <li>Драма</li><li>Экшен</li><li>Фэнтези</li><li>Романтика</li>
         </ul>
+        <hr style="border-color:#333">
+        <h3>Новости</h3>
+        <div class="news-list">
+            <article><h4>Новая рецензия: Frieren</h4><p>Добавили подробный обзор с плюсами и минусами.</p></article>
+            <article><h4>Обновление дизайна</h4><p>Перешли на тёмную тему и улучшили навигацию.</p></article>
+            <article><h4>Планы на февраль</h4><p>Добавляем личные кабинеты и комментарии.</p></article>
+        </div>
     </aside>
+
+    <section style="grid-column:1 / -1">
+        <h2>Галерея аниме</h2>
+        <div class="grid-gallery">
+            <figure><img src="img/attack_on_titan.jpg" alt="Атака титанов"><figcaption>Атака титанов</figcaption></figure>
+            <figure><img src="img/naruto.jpg" alt="Наруто"><figcaption>Наруто</figcaption></figure>
+            <figure><img src="img/death_note.jpg" alt="Тетрадь смерти"><figcaption>Тетрадь смерти</figcaption></figure>
+            <figure><img src="img/your_lie_in_april.jpg" alt="Твоя апрельская ложь"><figcaption>Твоя апрельская ложь</figcaption></figure>
+            <figure><img src="img/86.jpg" alt="Восемьдесят шесть"><figcaption>Восемьдесят шесть</figcaption></figure>
+            <figure><img src="img/sukasuka.jpg" alt="Что будешь делать во время апокалипсиса?"><figcaption>Что будешь делать во время апокалипсиса?</figcaption></figure>
+        </div>
+    </section>
 </main>
 
 <footer>
     <p>&copy; 2025 AnimeReviews. Все права защищены.</p>
+    <div class="footer-banner">Реклама? Говорят тут можно встретить Демоницу</div>
 </footer>
+
+<div id="chatStub">Чат (скоро)</div>
+
+<div class="modal" id="authModal" aria-hidden="true">
+    <div class="modal__card">
+        <div class="modal__header">
+            <h3>Вход в AnimeReviews</h3>
+            <button class="modal__close" id="closeAuth" aria-label="Закрыть">×</button>
+        </div>
+        <form id="authForm" novalidate>
+            <div class="form-field">
+                <label for="email">Email</label>
+                <input id="email" type="email" required placeholder="you@example.com">
+            </div>
+            <div class="form-field">
+                <label for="password">Пароль</label>
+                <input id="password" type="password" required minlength="6" placeholder="••••••••">
+            </div>
+            <div class="auth-actions">
+                <label><input type="checkbox" id="remember"> Запомнить меня</label>
+                <button class="btn btn--primary" type="submit">Войти</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="scripts.js"></script>
 </body>
 </html>
