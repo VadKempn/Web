@@ -326,3 +326,89 @@ input[type="email"],input[type="password"]{
         grid-template-columns:repeat(6,minmax(240px,1fr));
     }
 }
+
+/* -------- WATCHLIST -------- */
+
+.wl-form{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr auto;
+    gap:10px;
+    margin:12px 0 14px;
+}
+.wl-form input, .wl-form select{
+    padding:10px 12px;
+    border-radius:10px;
+    border:1px solid #333;
+    background:#2a2a2a;
+    color:var(--text);
+}
+
+.wl-filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:10px;
+}
+.wl-filter.active{
+    color:var(--brand);
+    text-decoration:underline;
+}
+
+.wl-list{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:grid;
+    gap:10px;              /* вертикальный ряд элементов */
+}
+.wl-item{
+    background:var(--panel-2);
+    border:1px solid #2f2f2f;
+    border-radius:12px;
+    padding:10px 12px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+}
+.wl-main{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+.wl-title{font-weight:600}
+.wl-title.is-done{
+    opacity:.7;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+
+.wl-badges{
+    display:flex;
+    gap:8px;
+    font-size:.9rem;
+    opacity:.9;
+}
+.wl-status, .wl-score{
+    background:#232323;
+    padding:3px 8px;
+    border-radius:999px;
+}
+
+.wl-actions{
+    display:flex;
+    gap:6px;
+}
+.wl-actions .btn{padding:6px 8px}
+
+.wl-empty{
+    opacity:.7;
+    padding:8px 0;
+}
+
+@media (max-width:720px){
+    .wl-form{
+        grid-template-columns:1fr 1fr;
+    }
+}
