@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новости — AnimeSite</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="news-styles.css">
+</head>
+<body>
+<header>
+    <div class="brand">
+        <h1>AnimeSite</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="reviews.html">Отзывы</a></li>
+            <li><a href="top.html">Топ-10</a></li>
+            <li><a href="news.html">Новости</a></li>
+            <li><a href="watchlist.html">Мой список</a></li>
+            <li><a href="about.html">О сайте</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+    </nav>
+    <button id="openAuth" class="btn btn--primary">Войти</button>
+</header>
+
+<main>
+    <section>
+        <h2>📰 Свежие новости</h2>
+
+        <div class="news-controls">
+            <button id="loadNews">Загрузить новости</button>
+            <button id="loadRandomNews">Случайные новости</button>
+        </div>
+
+        <div id="newsLoader" class="news-loader hidden">
+            <div class="spinner"></div>
+            <p>Загрузка новостей...</p>
+        </div>
+
+        <div id="newsError" class="news-error hidden"></div>
+        <div id="filterBadge" class="filter-badge hidden"></div>
+        <div id="newsFeed" class="posts-list"></div>
+    </section>
+
+    <aside>
+        <h3>ℹ️ Информация</h3>
+        <p><strong>Источник данных:</strong></p>
+        <p style="font-size: 0.9rem; color: #999;">JSONPlaceholder API</p>
+
+        <hr style="border: 1px solid #333; margin: 15px 0;">
+
+        <p><strong>Функции:</strong></p>
+        <ul style="font-size: 0.9rem; margin: 10px 0; padding-left: 20px;">
+            <li>Загрузка постов</li>
+            <li>Просмотр комментариев</li>
+            <li>Случайная фильтрация</li>
+            <li>Обработка ошибок</li>
+        </ul>
+
+        <hr style="border: 1px solid #333; margin: 15px 0;">
+
+        <p style="font-size: 0.85rem; color: #777;">
+            💡 Кликните на пост, чтобы развернуть комментарии
+        </p>
+    </aside>
+</main>
+
+<template id="postTemplate">
+    <article class="post-card">
+        <div class="post-header">
+            <div>
+                <h3 class="post-title"></h3>
+            </div>
+            <span class="post-id"></span>
+        </div>
+        <p class="post-body"></p>
+        <div class="post-meta">
+            <div class="post-user">
+                <span>Автор:</span>
+                <span class="post-author"></span>
+            </div>
+        </div>
+        <button class="toggle-comments">Комментарии (0)</button>
+        <div class="comments-section">
+            <div class="comments-list"></div>
+        </div>
+    </article>
+</template>
+
+<template id="commentTemplate">
+    <div class="comment-card">
+        <div class="comment-author"></div>
+        <div class="comment-email"></div>
+        <div class="comment-body"></div>
+    </div>
+</template>
+
+<footer>
+    <p>&copy; 2024 AnimeSite. Все права защищены.</p>
+</footer>
+
+<div id="authModal" class="modal">
+    <div class="modal__card">
+        <div class="modal__header">
+            <h2>Вход</h2>
+            <button id="closeAuth" class="modal__close">&times;</button>
+        </div>
+        <form id="authForm">
+            <div class="form-field">
+                <label>Логин</label>
+                <input type="text" placeholder="Введите логин" required>
+            </div>
+            <div class="form-field">
+                <label>Пароль</label>
+                <input type="password" placeholder="Введите пароль" required>
+            </div>
+            <div class="auth-actions">
+                <button type="submit" class="btn btn--primary">Войти</button>
+                <button type="button" id="closeAuthBtn" class="btn btn--ghost">Отмена</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="scripts.js"></script>
+<script src="news-api.js"></script>
+</body>
+</html>
