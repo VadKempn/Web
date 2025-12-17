@@ -11,11 +11,13 @@
         const filterBtns   = document.querySelectorAll(".wl-filter");
         const clearDoneBtn = document.getElementById("wlClearDone");
 
-        const LS_KEY = "anime_watchlist_v1";
-        let items = load();
+        const LS_KEY = "anime_watchlist_v1"; //localStorage
+        let items = load(); //массив всех аниме
         let currentFilter = "all";
 
         render();
+
+
 
         wlForm.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -40,7 +42,7 @@
 
         wlList.addEventListener("click", (e) => {
             const li = e.target.closest("li[data-id]");
-            if (!li) return;
+            if (!li) return; //delig
 
             const id = Number(li.dataset.id);
             const item = items.find(x => x.id === id);
@@ -116,17 +118,22 @@
             });
         }
 
+
+
         function statusName(s) {
             if (s === "plan") return "Планирую";
             if (s === "watching") return "Смотрю";
             return "Просмотрено";
         }
 
+
+
         function save() {
             localStorage.setItem(LS_KEY, JSON.stringify(items));
         }
-
+        //сериализует массив в JSON и кладёт в localStorage
         function load() {
+            //читает JSON и превращает обратно в массив.
             try {
                 const raw = localStorage.getItem(LS_KEY);
                 return raw ? JSON.parse(raw) : [];
