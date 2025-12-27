@@ -66,7 +66,7 @@ header nav a{
     color:var(--text);
     font-weight:500;
     text-decoration:none;
-    transition: color .9s ease, transform .9s ease;  /* плавность */
+    transition: color .9s ease, transform .9s ease;
 }
 
 header nav a:hover{
@@ -412,51 +412,31 @@ input[type="email"],input[type="password"]{
         grid-template-columns:1fr 1fr;
     }
 }
-/* ===== СТИЛИ СТРАНИЦЫ НОВОСТЕЙ ===== */
-
-/* Элементы управления */
-.news-controls {
-    margin-bottom: 20px;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.news-controls button {
-    background: var(--brand);
-    color: #082c25;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.news-controls button:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-}
 
 .news-loader {
-    text-align: center;
-    padding: 40px 20px;
-    margin: 20px 0;
-}
-
-.news-loader.hidden {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.3s ease;
 }
 
 .spinner {
-    border: 4px solid #333;
-    border-top: 4px solid var(--brand);
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     animation: spin 1s linear infinite;
-    margin: 0 auto 15px;
+    margin-bottom: 20px;
 }
 
 @keyframes spin {
@@ -465,184 +445,99 @@ input[type="email"],input[type="password"]{
 }
 
 .news-error {
-    background-color: #4a1f1f;
-    color: #ff6b6b;
-    padding: 15px;
-    border-radius: 10px;
-    border-left: 4px solid #ff6b6b;
+    text-align: center;
+    color: #dc3545;
+    padding: 25px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    border: 2px solid #f5c6cb;
+    border-radius: 12px;
     margin: 20px 0;
-    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.15);
+    animation: shake 0.5s ease-in-out;
 }
 
-.news-error.hidden {
-    display: none;
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
 }
+
 
 .filter-badge {
-    background-color: #1a4d47;
-    color: var(--brand);
-    padding: 8px 12px;
+    background: #28a745;
+    color: white;
+    padding: 8px 16px;
     border-radius: 20px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-    display: inline-block;
+    font-size: 14px;
+    margin: 15px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden { display: none !important; }
+
+.news-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.btn--primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn--ghost {
+    background: transparent;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn--ghost:hover {
+    background: #667eea;
+    color: white;
 }
 
 .posts-list {
     display: grid;
     gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 }
 
 .post-card {
-    background: var(--panel-2);
-    border-left: 4px solid var(--brand);
-    border-radius: 10px;
+    background: white;
+    border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
 
 .post-card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.7);
-    transform: translateY(-2px);
-}
-
-.post-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 10px;
-}
-
-.post-title {
-    color: var(--brand);
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin: 0 0 8px 0;
-    text-transform: capitalize;
-}
-
-.post-id {
-    background: #1a1a1a;
-    color: #888;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-}
-
-.post-body {
-    color: var(--text);
-    line-height: 1.6;
-    margin-bottom: 12px;
-    font-size: 0.95rem;
-}
-
-.post-meta {
-    display: flex;
-    gap: 16px;
-    font-size: 0.85rem;
-    color: #999;
-    margin-bottom: 15px;
-}
-
-.post-user {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.toggle-comments {
-    background: transparent;
-    border: 1px solid var(--brand);
-    color: var(--brand);
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.3s;
-}
-
-.toggle-comments:hover {
-    background: var(--brand);
-    color: #082c25;
-}
-
-.toggle-comments.active {
-    background: var(--brand);
-    color: #082c25;
-}
-
-.comments-section {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid #333;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-}
-
-.comments-section.show {
-    max-height: 1000px;
-}
-
-.comments-list {
-    display: grid;
-    gap: 12px;
-    margin-top: 10px;
-}
-
-.comment-card {
-    background: #1a1a1a;
-    padding: 12px;
-    border-radius: 8px;
-    border-left: 3px solid #3498db;
-    font-size: 0.9rem;
-}
-
-.comment-author {
-    color: var(--brand);
-    font-weight: 600;
-    margin-bottom: 6px;
-    font-size: 0.9rem;
-}
-
-.comment-email {
-    color: #666;
-    font-size: 0.85rem;
-    margin-bottom: 8px;
-}
-
-.comment-body {
-    color: var(--text);
-    line-height: 1.5;
-    font-size: 0.9rem;
-}
-
-.comments-loading {
-    color: #999;
-    text-align: center;
-    padding: 10px;
-    font-style: italic;
-}
-
-@media (max-width: 720px) {
-    .news-controls {
-        flex-direction: column;
-    }
-
-    .news-controls button {
-        width: 100%;
-    }
-
-    .post-header {
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .post-meta {
-        flex-direction: column;
-        gap: 6px;
-    }
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
